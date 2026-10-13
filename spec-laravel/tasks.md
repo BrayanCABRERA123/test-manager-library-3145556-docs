@@ -28,6 +28,12 @@ Cada tarea termina cuando su **evidencia** existe y se puede ejecutar (artículo
 | T-22 | `app`: login, catálogo, socios, prestar, devolver, vencidos, reporte | T-16 | Recorrido manual de punta a punta en la feria |
 | T-23 | `page`: sitio público estático de presentación | — | Se abre sin la API; correcto en móvil y escritorio |
 
+> **Incongruencia detectada (se registra, no cambia el alcance):** T-21 pide crear **3 préstamos vencidos** usando **solo la API**
+> ([`data-model.md`](data-model.md) §9), pero la API calcula `due_at = loaned_at + 14 días` con la hora actual del servidor, así que
+> por la API no se puede crear un préstamo ya vencido. Además, RNF-1 mide la búsqueda con **5 000 libros** del sembrador y T-21 pide
+> **≥ 40**. **Falta** definir cómo se obtienen los vencidos (por ejemplo, un reloj configurable solo en el entorno de demostración) y
+> cuántos libros debe poder sembrar `tool`.
+
 ## Definición de terminado de la prueba
 
 Quien llegue a T-17 con evidencia tiene el **núcleo** hecho. T-18 a T-23 son lo que separa un trabajo bueno de uno sobresaliente. Se evalúa
