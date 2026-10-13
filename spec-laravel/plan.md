@@ -18,7 +18,7 @@ Cómo se construye lo que dicen [`spec.md`](spec.md) y [`constitution.md`](const
 | D-09 | Contraseñas | Argon2id (driver `argon2id` de `Hash`) detrás del puerto `PasswordHasher`; el dominio nunca ve la clave en claro | Artículo IX |
 | D-10 | Arranque | La aplicación crea el admin inicial desde `ADMIN_USERNAME` / `ADMIN_PASSWORD` | La base no puede producir el hash |
 | D-11 | Autenticación | JWT HS256 con `firebase/php-jwt`, 8 horas, clave en `JWT_SECRET` ([ADR-005](adr/adr-005-jwt-over-sanctum.md)) | Simple y sin estado |
-| D-12 | Pruebas | Pest, con fakes para los puertos y una base real solo en pruebas de integración | Pirámide de pruebas |
+| D-12 | Pruebas | PHPUnit (incluido en Laravel 13), con fakes para los puertos y una base real solo en pruebas de integración | Pirámide de pruebas |
 | D-13 | Identificadores | UUID v4 generados por la aplicación (`Str::uuid()`), no los UUID ordenados que usa `HasUuids` por defecto | Contrato: UUID v4 |
 | D-14 | Subida de portada | `POST` con `_method=PUT` sobre `/books/{id}/cover` ([ADR-006](adr/adr-006-cover-upload-method.md)) | PHP no procesa `multipart` en `PUT` |
 | D-15 | Frontend | React con Vite (origen `http://localhost:5173`) | Stack del reto; coincide con `CORS_ORIGIN` |
