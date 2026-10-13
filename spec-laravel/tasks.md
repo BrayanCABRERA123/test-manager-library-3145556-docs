@@ -38,3 +38,25 @@ Cada tarea termina cuando su **evidencia** existe y se puede ejecutar (artículo
 
 Quien llegue a T-17 con evidencia tiene el **núcleo** hecho. T-18 a T-23 son lo que separa un trabajo bueno de uno sobresaliente. Se evalúa
 el desempeño con SDD, no la cantidad de tareas: una tarea con evidencia vale más que tres a medias.
+
+## Estado de la implementación (13 de octubre de 2026, 17:00)
+
+Evidencia ejecutable según el artículo XII. Repositorios: `api`, `infra`, `app`, `page` y `tool` del mismo fork.
+
+| # | Estado | Evidencia |
+|---|---|---|
+| T-01 | ✅ hecha | `GET /health` y `GET /api/v1/health` → `{"status":"ok"}`; arranca con `docker compose up -d --build` (`infra`) |
+| T-02 | ✅ hecha | Migraciones de `api`: seis tablas en singular en el esquema `library`, FK, índices únicos y parciales, `ck_book_available_range`, cinco categorías con UUID fijos, **0 columnas con `DEFAULT`** |
+| T-06 | ✅ hecha | `UserTest`: `" Ana "` queda `ana`; rol inválido rechazado |
+| T-07 | ✅ hecha | `LoginServiceTest` y `CreateLibrarianServiceTest` contra fakes: HU-01 y HU-02 |
+| T-14 | ✅ hecha | Argon2id (`$argon2id$…`) y JWT HS256 de 8 h con `sub` y `role`; ninguna respuesta incluye la clave ni el hash |
+| T-17 | ✅ hecha | La base arranca vacía, se migra al iniciar y se puede iniciar sesión como admin |
+| T-20 | ✅ parcial | `infra` levanta motor vacío y API con un comando; el frontend se sirve aparte (incongruencia anotada en ADR-001) |
+| T-21 | ✅ parcial | `tool/src/seed.mjs` siembra por la API bibliotecarios y verifica categorías; libros, socios y préstamos pendientes |
+| T-22 | ✅ parcial | `app`: login, categorías, socios y alta de bibliotecarios conectados a la API |
+| T-23 | ✅ hecha | `page`: sitio estático responsivo, sin llamadas a la API |
+| HU-05 | ✅ hecha | `POST/GET /api/v1/members` y `GET /members/{id}` con `active_loans`; documento repetido → 409 `DOCUMENT_TAKEN` |
+| CA-01.3 | ✅ hecha | `AuthenticateTokenTest`: sin token 401 `UNAUTHENTICATED`, rol insuficiente 403 `FORBIDDEN_ROLE` |
+| T-03 a T-05, T-08 a T-13, T-15, T-16, T-18, T-19 | ⏳ pendiente | Libros, préstamos, devoluciones, vencidos, reporte, portadas, pruebas de integración, contrato, concurrencia y arquitectura |
+
+Pruebas unitarias de `api`: **OK (12 tests, 33 assertions)**.
