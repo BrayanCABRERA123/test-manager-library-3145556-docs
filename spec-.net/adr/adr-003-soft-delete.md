@@ -9,3 +9,9 @@
 - **Consecuencias:** `loan_item.book_id` lleva una FK `RESTRICT` como **barrera de última instancia**: un `DELETE` manual o un cambio de
   código futuro fallan ruidosamente en vez de corromper el histórico. El binario de la portada es el único dato que sí se borra físicamente.
 - **Cómo se verifica:** consultar un libro dado de baja devuelve 404; un `DELETE` por `psql` sobre un libro con líneas falla por la FK.
+- **Incongruencia detectada (se registra, no se corrige para no cambiar el alcance):**
+  - Este ADR y CA-03.5 de [`spec.md`](../spec.md) hablan de «préstamos **abiertos**», pero en [`api-contract.md`](../api-contract.md)
+    `open` es un estado calculado distinto de `overdue`. **Falta** precisar si un libro con líneas vencidas sin devolver
+    (`overdue`) también impide la baja.
+  - **Falta** definir qué pasa con la portada al dar de baja el libro: [`data-model.md`](../data-model.md) §7 solo dice que el
+    binario es el único dato que se borra físicamente, no si la baja lógica lo borra.

@@ -44,6 +44,7 @@ No hay prórroga: suban avances parciales con commits pequeños durante la prueb
 |---|---|
 | [`spec-python/`](spec-python/) | El spec de Manager Library escrito para un backend Python |
 | [`spec-.net/`](spec-.net/) | El mismo sistema especificado para un backend .NET |
+| [`spec-laravel/`](spec-laravel/) | Traducción del spec al stack del reto (Laravel + React): mismo negocio, decisiones técnicas propias y ADR-005 y ADR-006 |
 
 Las dos versiones describen el **mismo producto** (las mismas historias, reglas de negocio y
 endpoints); cambian las decisiones de tecnología. Ninguna de las dos es el stack del reto.
@@ -54,7 +55,7 @@ En cualquiera de las dos carpetas, en este orden:
 
 1. `constitution.md` — principios innegociables.
 2. `spec.md` — qué debe hacer el sistema: actores, historias, criterios de aceptación, reglas de negocio.
-3. `plan.md`, `architecture.md` y `arquitectura-panoramica.md` — cómo se construye.
+3. `plan.md`, `architecture.md` y `architecture-overview.md` — cómo se construye.
 4. `data-model.md` y `api-contract.md` — el modelo de datos y el contrato de la API.
 5. `tasks.md` — qué hay que hacer y con qué evidencia se da por hecho.
 6. `adr/` — las decisiones de arquitectura, con sus alternativas y consecuencias.
