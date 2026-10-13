@@ -11,3 +11,9 @@
 - **Consecuencias:** si el `CHECK` salta, **algo escribió fuera del adaptador**: es un defecto, no un caso de negocio. Devolver dos veces
   la misma línea no suma dos veces porque `returned_at` ya está lleno (CA-07.2).
 - **Cómo se verifica:** prueba concurrente con dos peticiones simultáneas sobre un libro con un ejemplar: exactamente una recibe 201.
+- **Incongruencia detectada (se registra, no se corrige para no cambiar el alcance):**
+  - La decisión exige un **testigo de versión** por libro (también [`plan.md`](../plan.md) D-04 y T-13 de [`tasks.md`](../tasks.md)),
+    pero la tabla `book` de [`data-model.md`](../data-model.md) §3 no tiene ninguna columna de versión, y ese documento declara que
+    gana sobre los demás. **Falta** la columna del testigo (nombre, tipo y regla) en el modelo de datos.
+  - «Responde 409 (o reintenta una vez si el ejemplar sigue disponible)» es ambiguo: **falta** definir cuándo se reintenta y
+    cuándo se responde 409 directamente.
