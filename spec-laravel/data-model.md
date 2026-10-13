@@ -120,7 +120,7 @@ porque ningún requisito las pide.
 
 | Regla | Objeto | Marca |
 |---|---|---|
-| Claves primarias de las seis tablas | `PK_*` | **motor** |
+| Claves primarias de las seis tablas | `pk_{tabla}` (snake_case, §0) | **motor** |
 | `category.name` único | índice único | **motor** |
 | `member.document_number` único | índice único | **motor** |
 | `user.username` único | índice único | **motor** |
