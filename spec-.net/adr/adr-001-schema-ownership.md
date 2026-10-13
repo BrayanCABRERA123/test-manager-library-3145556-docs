@@ -10,3 +10,9 @@
 - **Consecuencias:** una extensión de Postgres o un índice nuevo se crea en la **misma** migración que lo usa. Un esquema cambiado a
   mano en el motor es un defecto, no una variante.
 - **Cómo se verifica:** `infra` no contiene `CREATE TABLE`; las consultas de `data-model.md` §10 coinciden con las migraciones.
+- **Incongruencia detectada (se registra, no se corrige para no cambiar el alcance):**
+  - Este ADR dice que `infra` «solo crea el motor vacío, el usuario y el volumen», pero T-20 de [`tasks.md`](../tasks.md)
+    pide que `infra` levante «motor vacío, API y frontend», y [`architecture-overview.md`](../architecture-overview.md) muestra
+    a `infra` levantando solo el motor y la API. **Falta** definir si el frontend forma parte de `infra`.
+  - **Falta** indicar quién crea el esquema `library` de [`data-model.md`](../data-model.md); por coherencia con este ADR
+    correspondería a una migración, pero no está escrito.

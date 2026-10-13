@@ -54,7 +54,7 @@ En cualquiera de las dos carpetas, en este orden:
 
 1. `constitution.md` — principios innegociables.
 2. `spec.md` — qué debe hacer el sistema: actores, historias, criterios de aceptación, reglas de negocio.
-3. `plan.md`, `architecture.md` y `arquitectura-panoramica.md` — cómo se construye.
+3. `plan.md`, `architecture.md` y `architecture-overview.md` — cómo se construye.
 4. `data-model.md` y `api-contract.md` — el modelo de datos y el contrato de la API.
 5. `tasks.md` — qué hay que hacer y con qué evidencia se da por hecho.
 6. `adr/` — las decisiones de arquitectura, con sus alternativas y consecuencias.

@@ -11,3 +11,9 @@
 - **Consecuencias:** CA-10.1 dice «una fila por libro y nombre de categoría congelado», no «una fila por libro». El reporte no
   incluye socios ni bibliotecarios (privacidad).
 - **Cómo se verifica:** prestar un libro, renombrarlo, pedir el reporte del mismo rango: el título del reporte es el viejo.
+- **Incongruencia detectada (se registra, no se corrige para no cambiar el alcance):**
+  - La decisión agrupa por `book_id, book_title, category_name` (igual que [`api-contract.md`](../api-contract.md) §3.7), pero
+    CA-10.1 de [`spec.md`](../spec.md) y las consecuencias de este ADR dicen «una fila por libro y nombre de categoría congelado»,
+    sin el título. **Falta** decir que renombrar un libro dentro del rango también produce dos filas, no solo cambiarlo de categoría.
+  - El reporte recibe `from` y `to` como **fechas** «ambos inclusive», pero `loaned_at` es un **instante** UTC. **Falta** definir el
+    límite exacto del rango (por ejemplo, si `to` incluye todo ese día hasta las 23:59:59 UTC).
