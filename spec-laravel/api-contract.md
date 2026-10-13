@@ -58,6 +58,11 @@ implemente en Python o .NET. Qué hace cada operación está en [`spec.md`](spec
 | `VALIDATION_ERROR` | 422 | Cualquier campo inválido |
 | `INVALID_DATE_RANGE` | 422 | CA-10.2 |
 
+> **Incongruencia detectada (se registra, no cambia el alcance):** §1 dice que un 401 también aplica «sin token, token inválido o
+> vencido», pero la tabla solo trae `INVALID_CREDENTIALS` (CA-01.2, login). Tampoco hay código para un error inesperado. **Falta**
+> un código para esos casos. Decisión de la implementación Laravel: `UNAUTHENTICATED` (401) cuando falta el token o no es válido, e
+> `INTERNAL_ERROR` (500) para errores inesperados, siempre con el cuerpo de error único y sin trazas.
+
 ## 3. Endpoints
 
 ### 3.1 Autenticación y salud
