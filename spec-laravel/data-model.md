@@ -49,6 +49,9 @@ erDiagram
 
 Seis entidades, seis tablas. No hay tabla de reporte, de multas ni de auditoría.
 
+> **Decisión de la implementación Laravel (no cambia el alcance):** Laravel necesita una tabla propia para registrar qué migraciones corrió.
+> Se crea como `public.migrations`, **fuera** del esquema `library`, para que el modelo siga teniendo exactamente seis tablas.
+
 ## 3. Modelo físico
 
 Ninguna columna lleva `DEFAULT`: los valores los pone el dominio.
